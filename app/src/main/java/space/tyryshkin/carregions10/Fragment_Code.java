@@ -325,5 +325,6 @@ public class Fragment_Code extends Fragment {
             textOfCode = text;
         }
         checkCode();
+        //получилось
     }
 }
