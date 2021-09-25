@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/name_of_region"
+        android:textColorHint="@color/green_300"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/green_500"
+        app:boxStrokeWidth="1dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/green_500"
+        app:hintTextColor="@color/green_500"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconTint="@color/green_500">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            style="@style/Widget.MaterialComponents.AutoCompleteTextView.OutlinedBox.Dense"
+            android:id="@+id/name_of_region_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:completionThreshold="2"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_for_edittext"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:scrollHorizontally="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputLayout"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/region"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:orientation="horizontal">
+    </GridLayout>
+
+</RelativeLayout>
