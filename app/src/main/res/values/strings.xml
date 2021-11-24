@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CarRegions</string>
+    <string name="app_name_ru">Авто коды регионов России</string>
     <string name="enter_the_code">Введите код региона</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
@@ -17,8 +18,28 @@
     <string name="code_region">Код - Регион</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="name_of_region">Введите название региона</string>
+    <string name="name_of_region">Введите регион или город</string>
     <string name="start_number">00</string>
     <string name="inputError">Не найдено</string>
-    <string name="loading">Загрузка...</string>
+    <string name="loading">Загрузка…</string>
+    <string name="error_internet">Интернет недоступен…\nПовторите попытку запуска приложения!</string>
+    <string name="theme">Оформление</string>
+    <string name="settings_theme_light">Светлая тема</string>
+    <string name="settings_theme_dark">Темная тема</string>
+    <string name="cancel1">Назад</string>
+    <string name="save">Сохранить</string>
+    <string name="understand">Понятно</string>
+    <string name="about_text">Понятно</string>
+    <string name="settings">Настройки</string>
+    <string name="settings_app">Настройки пользователя</string>
+    <string name="app">Приложение</string>
+    <string name="about">О приложении</string>
+    <string name="information_app">Данное приложение является справочником автомобильных кодов регионов России.\n\nДля того, чтобы найти регион, Вам нужно ввести код на первой вкладке приложения, после чего высветиться закрепленный за этим кодом регион России.\n\nНа второй вкладке приложения есть возможность поиска кодов по названию региона или города.\n\nДанное приложение является абсолютно бесплатным и создано на полном энтузиазме в помощь Вам. Если у Вас есть какие-либо пожелания или предложения прошу оставить отзыв на Play Маркете или направить письмо нажав на иконку \"Обратная связь\" в настройках приложения.</string>
+    <string name="settings_about">Показать описание приложения</string>
+    <string name="estimate">Поставить оценку</string>
+    <string name="settings_estimate">Оценить приложение в Play Маркет</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="settings_feedback">Отправить пожелания, предлажения или комментарии</string>
+
+    <string name="version_app">Версия приложения: 1.2.0</string>
 </resources>

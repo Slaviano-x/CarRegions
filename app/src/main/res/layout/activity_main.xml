@@ -2,22 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_50"
+    android:background="?attr/theme_background"
     tools:context=".Activity_Main">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabRippleColor="@color/green_100"
-        android:visibility="invisible"/>
+        android:layout_toStartOf="@+id/layout_image"
+        android:visibility="invisible"
+        app:tabRippleColor="?attr/ripple_100" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tab_layout"/>
+        android:layout_below="@+id/tab_layout" />
+
+    <RelativeLayout
+        android:id="@+id/layout_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tab_layout"
+        android:layout_alignBottom="@+id/tab_layout"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/theme_color"
+        android:visibility="invisible">
+
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings"
+            android:layout_marginHorizontal="6dp"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:background="?attr/theme_color"/>
+    </RelativeLayout>
 
 </RelativeLayout>

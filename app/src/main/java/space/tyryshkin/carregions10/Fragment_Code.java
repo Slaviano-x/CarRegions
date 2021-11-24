@@ -1,9 +1,12 @@
 package space.tyryshkin.carregions10;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,8 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import space.tyryshkin.carregions10.R;
+import java.util.ArrayList;
 
 public class Fragment_Code extends Fragment {
     private TextView code;
@@ -36,6 +40,11 @@ public class Fragment_Code extends Fragment {
     private String textOfCode = "";
 
     private View view;
+
+    private SharedPreferences sharedPreferences;
+    private int version;
+
+    private ArrayList<String> threeCodeList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +72,31 @@ public class Fragment_Code extends Fragment {
         num9 = view.findViewById(R.id.num9);
         numC = view.findViewById(R.id.numC);
         backspace = view.findViewById(R.id.backspace);
+
+        sharedPreferences = this.requireActivity().getSharedPreferences(Enum_Constant_Settings.APP_SETTING_MODE.getString(), Context.MODE_PRIVATE);
+        version = sharedPreferences.getInt(Enum_Constant_Settings.APP_VERSION.getString(), 0);
+    }
+
+    private void createListOpportunityThreeCode() {
+        threeCodeList.clear();
+        try {
+            SQLiteOpenHelper codeDatabaseHelper = new CodeDatabaseHelper(getActivity(), version);
+            SQLiteDatabase db = codeDatabaseHelper.getReadableDatabase();
+            Cursor cursor = db.query("CODES",
+                    new String[]{"CODE"},
+                    null, null, null, null, null);
+
+            while (cursor.moveToNext()) {
+                String code = cursor.getString(0);
+                if (code.length() == 3) {
+                    threeCodeList.add(code);
+                }
+            }
+            cursor.close();
+            db.close();
+        } catch (SQLiteException e) {
+            region.setText("Введите код региона");
+        }
     }
 
     private void setOnClicks() {
@@ -74,8 +108,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("15") && !textOfCode.equals("19") &&
-                            !textOfCode.equals("75") && !textOfCode.equals("79")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "0")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "0";
@@ -96,7 +130,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("12") && !textOfCode.equals("16") && !textOfCode.equals("76")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "1")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "1";
@@ -117,8 +152,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("10") && !textOfCode.equals("12") &&
-                            !textOfCode.equals("14") && !textOfCode.equals("15") && !textOfCode.equals("70")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "2")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "2";
@@ -139,9 +174,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("11") && !textOfCode.equals("12") &&
-                            !textOfCode.equals("16") && !textOfCode.equals("17") &&
-                            !textOfCode.equals("19") && !textOfCode.equals("76")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "3")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "3";
@@ -162,9 +196,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("12") && !textOfCode.equals("13") &&
-                            !textOfCode.equals("15") && !textOfCode.equals("16") &&
-                            !textOfCode.equals("17") && !textOfCode.equals("77")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "4")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "4";
@@ -185,7 +218,8 @@ public class Fragment_Code extends Fragment {
             if (textOfCode.length() < 3) {
 
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("12")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "5")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "5";
@@ -205,10 +239,8 @@ public class Fragment_Code extends Fragment {
             }
             if (textOfCode.length() < 3) {
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("11") && !textOfCode.equals("12") &&
-                            !textOfCode.equals("13") && !textOfCode.equals("15") &&
-                            !textOfCode.equals("18") && !textOfCode.equals("19") &&
-                            !textOfCode.equals("71")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "6")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "6";
@@ -228,9 +260,8 @@ public class Fragment_Code extends Fragment {
             }
             if (textOfCode.length() < 3) {
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("14") && !textOfCode.equals("17") &&
-                            !textOfCode.equals("19") && !textOfCode.equals("77") &&
-                            !textOfCode.equals("79")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "7")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "7";
@@ -250,8 +281,8 @@ public class Fragment_Code extends Fragment {
             }
             if (textOfCode.length() < 3) {
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("13") && !textOfCode.equals("17") &&
-                            !textOfCode.equals("19")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "8")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "8";
@@ -271,8 +302,8 @@ public class Fragment_Code extends Fragment {
             }
             if (textOfCode.length() < 3) {
                 if (textOfCode.length() == 2) {
-                    if (!textOfCode.equals("15") && !textOfCode.equals("19") &&
-                            !textOfCode.equals("79")) {
+                    createListOpportunityThreeCode();
+                    if (!threeCodeList.contains(textOfCode + "9")) {
                         checkCode();
                     } else {
                         textOfCode = textOfCode + "9";
@@ -290,8 +321,9 @@ public class Fragment_Code extends Fragment {
             code.setText(textOfCode);
             region.setText("Введите код региона");
         });
-        backspace.setOnClickListener(v -> backspace(textOfCode));
-
+        backspace.setOnClickListener(v -> {
+            backspace(textOfCode);
+        });
     }
 
     public void checkCode() {
@@ -299,7 +331,7 @@ public class Fragment_Code extends Fragment {
             region.setText("Введите код региона");
         } else {
             try {
-                SQLiteOpenHelper codeDatabaseHelper = new CodeDatabaseHelper(getActivity());
+                SQLiteOpenHelper codeDatabaseHelper = new CodeDatabaseHelper(getActivity(), version);
                 SQLiteDatabase db = codeDatabaseHelper.getReadableDatabase();
                 Cursor cursor = db.query("CODES",
                         new String[]{"CODE", "REGION"},
@@ -325,6 +357,5 @@ public class Fragment_Code extends Fragment {
             textOfCode = text;
         }
         checkCode();
-        //получилось
     }
 }

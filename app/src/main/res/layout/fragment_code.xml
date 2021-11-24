@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/theme_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -53,7 +54,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/enter_the_code"
-            android:textColor="@color/black"
+            android:textColor="?attr/main_text_color"
             android:textSize="22sp" />
     </LinearLayout>
 
@@ -80,6 +81,7 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_1"
+                app:backgroundTint="?attr/numbersButtonColor"
                 android:textSize="30sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -90,7 +92,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_2"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num3"
@@ -100,7 +103,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_3"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +120,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_4"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num5"
@@ -126,7 +131,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_5"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num6"
@@ -136,7 +142,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_6"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
         </LinearLayout>
 
         <LinearLayout
@@ -152,7 +159,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_7"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num8"
@@ -162,7 +170,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_8"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num9"
@@ -172,7 +181,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_9"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
         </LinearLayout>
 
         <LinearLayout
@@ -189,7 +199,8 @@
                 android:layout_weight="1"
                 android:text="@string/delete"
                 android:textColor="@color/red"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/num0"
@@ -199,7 +210,8 @@
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
                 android:text="@string/_0"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:backgroundTint="?attr/numbersButtonColor"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/backspace"
@@ -209,7 +221,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                app:backgroundTint="?attr/numbersButtonColor"/>
         </LinearLayout>
 
     </LinearLayout>

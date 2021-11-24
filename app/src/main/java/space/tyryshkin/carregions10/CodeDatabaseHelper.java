@@ -2,8 +2,10 @@ package space.tyryshkin.carregions10;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,14 +18,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class CodeDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "region";
-    private static final int DB_VERSION = 1;
-    private final Context context;
 
-    CodeDatabaseHelper(Context context) {
+    CodeDatabaseHelper(Context context, int DB_VERSION) {
         super(context, DB_NAME, null, DB_VERSION);
-        this.context = context;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE CODES (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "CODE TEXT, "
+                + "REGION TEXT, "
+                + "CITIES TEXT);");
     }
 
     @Override
@@ -33,55 +45,30 @@ public class CodeDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE CODES (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "CODE TEXT, "
-                + "REGION TEXT);");
-
-        jsonParse();
-    }
-
-    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS CODES");
         onCreate(db);
     }
 
-    private static void insertCodes(SQLiteDatabase db, String code, String region) {
-        ContentValues drinkValues = new ContentValues();
-        drinkValues.put("CODE", code);
-        drinkValues.put("REGION", region);
-        db.insert("CODES", null, drinkValues);
-    }
+    public boolean jsonParse(Map<String, String> code_region, Map<String, String> region_cities) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = 0;
+        for (String code : code_region.keySet()) {
+            ContentValues values = new ContentValues();
 
-    private void jsonParse() {
-        RequestQueue mQueue = Volley.newRequestQueue(context);
-        String url = "https://run.mocky.io/v3/8a077dcf-78f4-4217-a5e2-041118c3f9ed";
+            String region = code_region.get(code);
+            String cities = region_cities.get(region);
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("codes");
+            values.put("CODE", code);
+            values.put("REGION", region);
+            values.put("CITIES", cities);
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject codes = jsonArray.getJSONObject(i);
-
-                        String code = codes.getString("code");
-                        String region = codes.getString("region");
-
-                        insertCodes(new CodeDatabaseHelper(context).getReadableDatabase(), code, region);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mQueue.add(request);
+            result = db.insert("CODES", null, values);
+        }
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
