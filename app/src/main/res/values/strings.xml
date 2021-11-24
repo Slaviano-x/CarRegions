@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">CarRegions</string>
-    <string name="app_name_ru">Авто коды регионов России</string>
+    <string name="app_name">Авто коды регионов РФ</string>
+    <string name="app_name_ru">Авто коды регионов РФ</string>
     <string name="enter_the_code">Введите код региона</string>
     <string name="_1">1</string>
     <string name="_2">2</string>

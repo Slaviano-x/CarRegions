@@ -165,7 +165,7 @@ public class Activity_Main extends AppCompatActivity {
 
         tabLayout.setBackgroundColor(applyAttribute(R.attr.theme_color));
 
-        tabLayout.setSelectedTabIndicatorColor(getColor(R.color.white));
+        tabLayout.setSelectedTabIndicatorColor(applyAttribute(R.attr.indicator));
         tabLayout.setTabTextColors(applyAttribute(R.attr.ripple_100), getColor(R.color.white));
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

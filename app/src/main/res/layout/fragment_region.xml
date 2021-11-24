@@ -14,11 +14,11 @@
         android:hint="@string/name_of_region"
         android:textColorHint="?attr/main_primary_500"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="?attr/main_primary_500"
+        app:boxStrokeColor="@color/green_500"
         app:boxStrokeWidth="1dp"
         app:endIconMode="clear_text"
-        app:endIconTint="?attr/main_primary_500"
-        app:hintTextColor="?attr/main_primary_500"
+        app:endIconTint="@color/green_500"
+        app:hintTextColor="@color/green_500"
         app:startIconDrawable="@drawable/ic_search"
         app:startIconTint="@color/green_500">
 

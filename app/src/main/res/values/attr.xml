@@ -10,5 +10,6 @@
         <attr name="numbersButtonColor" format="color"/>
         <attr name="main_primary_500" format="color"/>
         <attr name="main_black_white" format="color"/>
+        <attr name="indicator" format="color"/>
     </declare-styleable>
 </resources>
